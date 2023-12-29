@@ -1,12 +1,19 @@
 ﻿$inputAddress = Read-Host "Provide Network address"
 $AddressFormat = $inputAddress.Split(".") 
 
+$octectLength = 3
+
 $1stOct = $AddressFormat[0]
 $2ndOct = $AddressFormat[1]
 $3rdOct = $AddressFormat[2]
 
 $4thOct = $AddressFormat[3].Split("/")[0]
 $subnetMask = $AddressFormat[3].Split("/")[1]
+
+if($1stOct.Length -gt $octectLength -or $2ndOct.Length -gt $octectLength -or $3rdOct -gt $octectLength -or $4thOct -gt $octectLength)
+{
+    Write-Host "Invalid ip address format" -BackgroundColor Yellow
+}
 
 $AddressSize = 32
 
